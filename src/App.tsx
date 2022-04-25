@@ -9,10 +9,7 @@ function App() {
   return (
     <div className="App">
       <h1>Planned Test</h1>
-      <RetrieveUsers />
-      <div>
-        <button type="button">Retrieve Users</button>
-      </div>
+      <RetrieveUsers url={API_URL} />
       <div>
         min: <input name="minAge" value="0" type="number" />
         max: <input name="maxAge" value="100" type="number" />
