@@ -7,18 +7,11 @@ const useUserUtils = () => {
   }
   const API_URL = 'http://localhost:8099'
   const [users, setUsers] = useState([])
-  const [filterYa, setFilterYa] = useState({ min: 0, max: 100 })
+  const [filter, setFilter] = useState({ min: 0, max: 100 })
   const ageGroups = ['kids', 'adults', 'seniors']
-  // const { min, max } = filter
+  const { min, max } = filter
 
-  const filter = filterYa
-
-  const setFilter = (theVal) => {
-    console.log('here we are literally settings the filter?@!?', theVal)
-    setFilterYa(theVal)
-  }
-
-  const getUsers = async ({ min, max }) => {
+  const getUsers = async () => {
 
     console.log('filter as per here', filter)
 
