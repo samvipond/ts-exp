@@ -13,13 +13,17 @@ const Main = () => {
   return (
     <MainWrapper>
       <Header />
+      <div className="content">
       <div className="left">
-      <RetrieveUsers {...userUtils} />
+      <h2>Users</h2>
       <AgeFilter {...userUtils} />
+      <RetrieveUsers {...userUtils} />
       </div>
+      <div className="right">
       <Search {...userUtils} />
       <UserList {...userUtils} />
-
+      </div>
+      </div>
     </MainWrapper>
   )
 }

@@ -5,9 +5,30 @@ const MainWrapper = styled.div`
   height: 100vh;
   margin: 0;
 
-  .left {
+  .content {
     display: flex;
+    width: 100%;
+    border: 1px solid blue;
+    box-sizing: border-box;
+    justify-content: space-between;
+    padding: 50px 150px;
+  }
+
+  .left {
+
     flex: 0 0 300px;
+    border: 1px solid red;
+
+    .users {
+      button {
+        border-radius: 20px;
+        background: #52A27E;
+      }
+    }
+  }
+
+  .right {
+    flex: 0 0 700px;
     border: 1px solid red;
   }
 `

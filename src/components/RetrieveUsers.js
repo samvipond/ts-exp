@@ -4,9 +4,10 @@ const RetrieveUsers = ({getUsers}) => {
 
   return (
     <div className="users">
-      <h2>Users</h2>
       <div>
-        <button type="button" onClick={getUsers}>Retrieve Users</button>
+        <button onClick={getUsers} type="button" class="btn btn-success btn-rounded">
+          Retrieve Users
+        </button>
       </div>
     </div>
   )
