@@ -1,8 +1,6 @@
 import React from 'react'
-import UserCom from './User'
 
-
-const RetrieveUsers = ({users, getUsers}) => {
+const RetrieveUsers = ({getUsers}) => {
 
   return (
     <div>
@@ -10,9 +8,6 @@ const RetrieveUsers = ({users, getUsers}) => {
       <div>
         <button type="button" onClick={getUsers}>Retrieve Users</button>
       </div>
-      {users.map((user) => (
-        <UserCom key={user.email} {...user} />
-      ))}
     </div>
   )
 }

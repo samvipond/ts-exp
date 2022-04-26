@@ -3,6 +3,7 @@ import React from 'react'
 const AgeFilter = ({filter, setFilter}) => {
 
   const handleUpdate = (name, value) => {
+    if (0 > value || value > 100) return
     setFilter({
       ...filter,
       [name]: Number(value),
