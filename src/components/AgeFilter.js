@@ -1,8 +1,6 @@
-import React from 'react';
-import useUserUtils from '../utils.js'
+import React from 'react'
 
-const AgeFilter = () => {
-  const { filter, setFilter } = useUserUtils()
+const AgeFilter = ({filter, setFilter}) => {
 
   const handleUpdate = (name, value) => {
     setFilter({

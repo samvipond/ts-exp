@@ -7,14 +7,38 @@ const useUserUtils = () => {
   }
   const API_URL = 'http://localhost:8099'
   const [users, setUsers] = useState([])
-  const [filter, setFilter] = useState({ min: 0, max: 100 })
+  const [filterYa, setFilterYa] = useState({ min: 0, max: 100 })
+  const ageGroups = ['kids', 'adults', 'seniors']
+  // const { min, max } = filter
 
-  const getUsers = async () => {
-    console.log('getUsers [utils]!', API_URL);
-    const response = await fetch(`${API_URL}/users/kids`)
-    const {data} = await response.json()
-    console.log(data);
-    setUsers(data)
+  const filter = filterYa
+
+  const setFilter = (theVal) => {
+    console.log('here we are literally settings the filter?@!?', theVal)
+    setFilterYa(theVal)
+  }
+
+  const getUsers = async ({ min, max }) => {
+
+    console.log('filter as per here', filter)
+
+    const [kidsResponse, adultsResponse, seniorsResponse] = await Promise.all(
+      ageGroups.map((a) => (fetch(`${API_URL}/users/${a}`))))
+
+    const [{ data: kids }, { data: adults }, seniors] = await Promise.all([
+      kidsResponse.json(),
+      adultsResponse.json(),
+      seniorsResponse.json(),
+    ])
+
+    const people = [...kids, ...adults, ...seniors]
+    const filtered = people.filter(({age}) => min <= age && age <= max)
+    console.log(people)
+    console.log(filtered)
+    console.log(min)
+    console.log(max)
+
+    setUsers(filtered)
 
   }
 

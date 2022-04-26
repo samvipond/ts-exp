@@ -7,11 +7,13 @@ const User = ({name, age, country, email }) => {
   const nice = true
   return (
     <div>
-      <span>{name.firstName}</span>
-      <span>&nbsp;{name.lastName}</span>
+      <div>
+        <span>{name.firstName} </span>
+        <span>{name.lastName} </span>
+        <span>{age}</span>
+      </div>
     </div>
   )
-
 }
 
 export default User
