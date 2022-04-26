@@ -8,9 +8,20 @@ const useUserUtils = () => {
   const ageGroups = ['kids', 'adults', 'seniors']
   const { min, max } = filter
 
+  const sortUsers = (people, nameDir = 'asc', ageDir = 'desc') => {
+    return people.sort((a, b)=> {
+      if (a.name.lastName === b.name.lastName){
+        return a.age > b.age ? -1 : 1
+      } else {
+        return a.name.lastName < b.name.lastName ? -1 : 1
+      }
+    })
+  }
+
   const filterUsers = (people, minAge, maxAge) => {
     const filtered = people.filter(({age}) => minAge <= age && age <= maxAge)
-    setUsers(filtered)
+    const sorted = sortUsers(filtered)
+    setUsers(sorted)
   }
 
   const handleUpdateFilter = (value) => {
@@ -32,6 +43,9 @@ const useUserUtils = () => {
     ])
 
     const people = [...kids, ...adults, ...seniors]
+    people.forEach((p) => {
+      p.fullName = `${p.firstName} ${p.lastName}`
+    })
     setAllUsers(people)
     filterUsers(people, min, max)
 

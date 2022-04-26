@@ -8,8 +8,8 @@ const User = ({name, age, country, email }) => {
   return (
     <div>
       <div>
-        <span>{name.firstName} </span>
-        <span>{name.lastName} </span>
+        <span style={{ width: '200px', display: 'inline-block'}}>{name.firstName} </span>
+        <span style={{ width: '200px', display: 'inline-block'}}>{name.lastName} </span>
         <span>{age}</span>
       </div>
     </div>
