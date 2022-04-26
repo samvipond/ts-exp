@@ -2,6 +2,7 @@ import React from 'react'
 
 import RetrieveUsers from './RetrieveUsers'
 import AgeFilter from './AgeFilter'
+import Search from './Search'
 import UserList from './UserList'
 import useUserUtils from '../utils'
 
@@ -12,6 +13,7 @@ const Main = () => {
       <h1>Planned Test</h1>
       <RetrieveUsers {...userUtils} />
       <AgeFilter {...userUtils} />
+      <Search {...userUtils} />
       <UserList {...userUtils} />
     </div>
   )
