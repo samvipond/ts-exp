@@ -7,7 +7,7 @@ const useUserUtils = () => {
   }
   const API_URL = 'http://localhost:8099'
   const [users, setUsers] = useState([])
-  const [filter, setFilter] = useState([])
+  const [filter, setFilter] = useState({ min: 0, max: 100 })
 
   const getUsers = async () => {
     console.log('getUsers [utils]!', API_URL);

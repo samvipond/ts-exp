@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 import RetrieveUsers from './components/RetrieveUsers.js'
-import AgeFilter from './components/AgeFilter'
+import AgeFilter from './components/AgeFilter.js'
 
 const API_URL = 'http://localhost:8099'
 
