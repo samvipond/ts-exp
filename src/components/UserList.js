@@ -7,7 +7,7 @@ import sort from '../assets/sort-arrows.svg'
 const UserList = ({ users, setReverseName, setReverseAge }) => {
   return (
     <div className="user-list">
-      {users.length ? (
+      {users && users.length ? (
         <>
           <div className="user-list-header">
             <div className="user-name">

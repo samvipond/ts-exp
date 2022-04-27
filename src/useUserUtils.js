@@ -10,27 +10,27 @@ const useUserUtils = () => {
   const [search, setSearch] = useState('')
   const [reverseName, setReverseName] = useState(false)
   const [reverseAge, setReverseAge] = useState(false)
+  const [sortBy, setSortBy] = useState('name')
 
   const { min, max } = filter
 
   // Toggle name sort direction
   const toggleReverseName = () => {
-    sortUsers(users, !reverseName, reverseAge)
-    setReverseName(!reverseName)
+    const val = sortBy === 'age' ? false : !reverseName
+    sortUsers(users, val, false, 'name')
+    setSortBy('name')
+    setReverseName(val)
   }
 
   // Toggle age sort direction
   const toggleReverseAge = () => {
-    sortUsers(users, reverseName, !reverseAge)
-    setReverseAge(!reverseAge)
+    const val = sortBy === 'name' ? false : !reverseAge
+    sortUsers(users, false, val, 'age')
+    setSortBy('age')
+    setReverseAge(val)
   }
 
-  // Sort by firstName + lastName asc + age descending (default)
-  const sortUsers = (people, nameReverse = false, ageReverse = false) => {
-    const defaultSort = [-1, 1]
-    const [leftName, rightName] = nameReverse ? defaultSort.reverse() : defaultSort
-    const [leftAge, rightAge] = ageReverse ? defaultSort.reverse() : defaultSort
-
+  const sortByName = ({people, leftName, rightName,leftAge, rightAge}) => {
     return people.sort((a, b)=> {
       if (a.name.lastName === b.name.lastName){
         return a.age > b.age ? leftAge : rightAge
@@ -38,6 +38,30 @@ const useUserUtils = () => {
         return a.name.lastName < b.name.lastName ? leftName : rightName
       }
     })
+  }
+
+  const sortByAge = ({people, leftName, rightName,leftAge, rightAge}) => {
+    return people.sort((a, b)=> {
+      if (a.age === b.age){
+        return a.name.lastName < b.name.lastName ? leftName : rightName
+      } else {
+        return a.age > b.age ? leftAge : rightAge
+      }
+    })
+  }
+
+  // Sort by firstName + lastName asc + age descending (default)
+  const sortUsers = (people, nameReverse = false, ageReverse = false, sortByFirst = 'name') => {
+    const defaultSort = [-1, 1]
+    const [leftName, rightName] = nameReverse ? defaultSort.reverse() : defaultSort
+    const [leftAge, rightAge] = ageReverse ? defaultSort.reverse() : defaultSort
+    const sortInfo = { people, leftName, rightName,leftAge, rightAge }
+
+    if (sortByFirst === 'name') {
+      return sortByName(sortInfo)
+    } else {
+      return sortByAge(sortInfo)
+    }
   }
 
   // Filter user list by search by name results
@@ -50,7 +74,7 @@ const useUserUtils = () => {
 
   const filterUsers = (people, minAge, maxAge) => {
     const filtered = people.filter(({age}) => minAge <= age && age <= maxAge)
-    const sorted = sortUsers(filtered)
+    const sorted = sortUsers(filtered, reverseName, reverseAge, sortBy)
     setUsers(sorted)
   }
 
