@@ -48,6 +48,11 @@ const MainWrapper = styled.div`
     .user-list-header {
       display: flex;
       padding: 10px 35px;
+      align-items: center;
+      img {
+        margin-left: 5px;
+        margin-bottom: 2px;
+      }
 
     }
     .user-details {

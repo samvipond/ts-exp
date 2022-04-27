@@ -14,19 +14,19 @@ const Wrapper = styled.div`
 
 const Input = ({img, value, onInput, name, placeholder, type, label, pre, id}) => (
   <Wrapper>
-    <div class="input-group rounded">
-      <span class="input-group-text border-0" id={id}>
+    <div className="input-group rounded">
+      <span className="input-group-text border-0" id={id}>
         {img && <img src={img} alt="search" />}
         {pre}
       </span>
       <input
         type={type}
-        class="form-control rounded"
+        className="form-control rounded"
         placeholder={placeholder}
         aria-label={label}
         name={name}
         value={value}
-        onInput={onInput}
+        onChange={onInput}
       />
     </div>
   </Wrapper>
