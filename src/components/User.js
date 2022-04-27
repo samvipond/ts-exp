@@ -7,7 +7,7 @@ const User = ({ name, age, email }) => (
       <span>{name.firstName} </span>
       <span>{name.lastName} </span>
     </div>
-    <div>
+    <div className="user-age">
       {age}
     </div>
   </div>

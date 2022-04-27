@@ -14,12 +14,14 @@ const UserList = ({ users, setReverseName, setReverseAge }) => {
               Name
               <img src={sort} alt="sort name" onClick={setReverseName} />
             </div>
-            <div>
+            <div className="user-age">
               Age
               <img src={sort} alt="sort age" onClick={setReverseAge} />
             </div>
           </div>
-          {users.map(user => <User key={user.email} {...user} />)}
+          <div className="users">
+            {users.map(user => <User key={user.email} {...user} />)}
+          </div>
         </>
       ) : null}
     </div>

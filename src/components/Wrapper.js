@@ -10,7 +10,7 @@ const MainWrapper = styled.div`
     width: 100%;
     box-sizing: border-box;
     justify-content: space-between;
-    padding: 50px 15vw;
+    padding: 50px 8vw;
     flex-wrap: wrap;
 
     h2.title {
@@ -23,14 +23,14 @@ const MainWrapper = styled.div`
     background: #fff;
     padding: 20px;
     border-radius: 5px;
+    margin-bottom: 20px;
   }
 
   .left {
     flex: 0 0 300px;
     max-height: 195px;
-    margin-bottom: 20px;
 
-    .users {
+    .retrieve-users {
       button {
         border-radius: 20px;
         background: #52A27E;
@@ -40,15 +40,22 @@ const MainWrapper = styled.div`
 
   .right {
     flex: 0 0 60%;
+    min-width: 300px;
     .user-list-header {
       display: flex;
-      padding: 10px 35px;
+      padding: 10px 30px;
       align-items: center;
       img {
         margin-left: 5px;
         margin-bottom: 2px;
+        cursor: pointer;
       }
-
+    }
+    .users {
+      max-height: 400px;
+      overflow-y: scroll;
+      border: 1px solid #ddd;
+      border-radius: 5px;
     }
     .user-details {
       display: flex;
@@ -60,7 +67,10 @@ const MainWrapper = styled.div`
     }
     .user-name {
       width: 50%;
-      min-width: 225px;
+      min-width: 180px;
+    }
+    .user-age {
+      min-width: 50px;
     }
   }
 `
