@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 const MainWrapper = styled.div`
   background: #F4F6F8;
-  height: 100vh;
+  min-height: 100vh;
   margin: 0;
 
   .content {
@@ -44,6 +44,16 @@ const MainWrapper = styled.div`
   .right {
     flex: 0 0 700px;
     border: 1px solid red;
+    .user-details {
+      display: flex;
+      border: 1px solid green;
+      padding: 10px;
+    }
+    .user-name {
+      width: 300px;
+      border: 1px solid purple;
+      /* display: inline-block; */
+    }
   }
 `
 
