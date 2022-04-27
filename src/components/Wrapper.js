@@ -12,12 +12,26 @@ const MainWrapper = styled.div`
     box-sizing: border-box;
     justify-content: space-between;
     padding: 50px 150px;
+    flex-wrap: wrap;
+
+    h2.title {
+      width: 100%;
+      border: 1px solid orange;
+      margin-bottom: 50px;
+    }
+  }
+
+  .main {
+    background: #fff;
+    padding: 20px;
+    border-radius: 5px;
   }
 
   .left {
 
     flex: 0 0 300px;
     border: 1px solid red;
+
 
     .users {
       button {

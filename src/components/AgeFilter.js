@@ -1,4 +1,5 @@
 import React from 'react'
+import Input from './Input'
 
 const AgeFilter = ({filter, setFilter}) => {
 
@@ -13,10 +14,12 @@ const AgeFilter = ({filter, setFilter}) => {
   const setMin = (event) => handleUpdate('min', event.target.value)
   const setMax = (event) => handleUpdate('max', event.target.value)
 
+
   return (
     <div>
-      Min: <input name="minAge" value={filter.min} type="number" onInput={setMin}/>
-      Max: <input name="maxAge" value={filter.max} type="number" onInput={setMax} />
+      <Input value={filter.min} type="number" onInput={setMin} pre="Min" label="min" name="min" />
+      <Input value={filter.max} type="number" onInput={setMax} pre="Max" label="max" name="max" />
+      {/* Max: <input name="maxAge" value={filter.max} type="number" onInput={setMax} /> */}
     </div>
   )
 }
