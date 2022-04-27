@@ -2,29 +2,35 @@ import { useState } from 'react';
 
 const useUserUtils = () => {
   const API_URL = 'http://localhost:8099'
+  const ageGroups = ['kids', 'adults', 'seniors']
+
   const [users, setUsers] = useState([])
   const [filter, setFilter] = useState({ min: 0, max: 100 })
   const [allUsers, setAllUsers] = useState([])
   const [search, setSearch] = useState('')
-  const ageGroups = ['kids', 'adults', 'seniors']
   const [reverseName, setReverseName] = useState(false)
   const [reverseAge, setReverseAge] = useState(false)
+
   const { min, max } = filter
 
+  // Toggle name sort direction
   const toggleReverseName = () => {
     sortUsers(users, !reverseName, reverseAge)
     setReverseName(!reverseName)
   }
 
+  // Toggle age sort direction
   const toggleReverseAge = () => {
     sortUsers(users, reverseName, !reverseAge)
     setReverseAge(!reverseAge)
   }
 
+  // Sort by firstName + lastName asc + age descending (default)
   const sortUsers = (people, nameReverse = false, ageReverse = false) => {
     const defaultSort = [-1, 1]
     const [leftName, rightName] = nameReverse ? defaultSort.reverse() : defaultSort
     const [leftAge, rightAge] = ageReverse ? defaultSort.reverse() : defaultSort
+
     return people.sort((a, b)=> {
       if (a.name.lastName === b.name.lastName){
         return a.age > b.age ? leftAge : rightAge
@@ -34,6 +40,7 @@ const useUserUtils = () => {
     })
   }
 
+  // Filter user list by search by name results
   const searchUsers = (term, users) => {
     return users.filter(({name}) => {
       const options = [name.firstName, name.lastName, `${name.firstName} ${name.lastName}`]
@@ -47,6 +54,7 @@ const useUserUtils = () => {
     setUsers(sorted)
   }
 
+  // Filter users by age
   const handleUpdateFilter = (value) => {
     setFilter(value)
     const { min: minAge, max: maxAge } = value
@@ -60,6 +68,7 @@ const useUserUtils = () => {
     }
   }
 
+  // Search users by name
   const handleSearch = (term) => {
     setSearch(term)
     let matches = allUsers
@@ -70,6 +79,7 @@ const useUserUtils = () => {
     filterUsers(matches, minAge, maxAge)
   }
 
+  // Click Retrieve Users
   const getUsers = async () => {
     setSearch('')
     const [kidsResponse, adultsResponse, seniorsResponse] = await Promise.all(
@@ -87,7 +97,6 @@ const useUserUtils = () => {
     })
     setAllUsers(people)
     filterUsers(people, min, max)
-
   }
 
   return {

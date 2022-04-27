@@ -8,7 +8,6 @@ const MainWrapper = styled.div`
   .content {
     display: flex;
     width: 100%;
-    border: 1px solid blue;
     box-sizing: border-box;
     justify-content: space-between;
     padding: 50px 15vw;
@@ -16,7 +15,6 @@ const MainWrapper = styled.div`
 
     h2.title {
       width: 100%;
-      border: 1px solid orange;
       margin-bottom: 50px;
     }
   }
@@ -28,9 +26,7 @@ const MainWrapper = styled.div`
   }
 
   .left {
-
     flex: 0 0 300px;
-    border: 1px solid red;
     max-height: 195px;
     margin-bottom: 20px;
 
@@ -44,7 +40,6 @@ const MainWrapper = styled.div`
 
   .right {
     flex: 0 0 60%;
-    border: 1px solid red;
     .user-list-header {
       display: flex;
       padding: 10px 35px;
@@ -58,7 +53,6 @@ const MainWrapper = styled.div`
     .user-details {
       display: flex;
       align-items: center;
-      border: 1px solid green;
       padding: 10px;
       input {
         margin-right: 10px;
@@ -67,8 +61,6 @@ const MainWrapper = styled.div`
     .user-name {
       width: 50%;
       min-width: 225px;
-      border: 1px solid purple;
-      /* display: inline-block; */
     }
   }
 `

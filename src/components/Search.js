@@ -3,7 +3,7 @@ import React from 'react'
 import Input from './Input'
 import zoom from '../assets/zoom.png'
 
-const Search = ({search, setSearch}) => {
+const Search = ({ search, setSearch}) => {
   const handleSearch = (event) => {
     if (event.target.value.length > 30) return
     const term = event.target.value

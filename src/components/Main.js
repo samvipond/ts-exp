@@ -14,15 +14,15 @@ const Main = () => {
     <MainWrapper>
       <Header />
       <div className="content">
-      <h2 className="title">Users</h2>
-      <div className="left main">
-      <AgeFilter {...userUtils} />
-      <RetrieveUsers {...userUtils} />
-      </div>
-      <div className="right main">
-      <Search {...userUtils} />
-      <UserList {...userUtils} />
-      </div>
+        <h2 className="title">Users</h2>
+        <div className="left main">
+          <AgeFilter {...userUtils} />
+          <RetrieveUsers {...userUtils} />
+        </div>
+        <div className="right main">
+          <Search {...userUtils} />
+          <UserList {...userUtils} />
+        </div>
       </div>
     </MainWrapper>
   )
