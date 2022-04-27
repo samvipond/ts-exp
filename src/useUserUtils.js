@@ -7,14 +7,29 @@ const useUserUtils = () => {
   const [allUsers, setAllUsers] = useState([])
   const [search, setSearch] = useState('')
   const ageGroups = ['kids', 'adults', 'seniors']
+  const [reverseName, setReverseName] = useState(false)
+  const [reverseAge, setReverseAge] = useState(false)
   const { min, max } = filter
 
-  const sortUsers = (people, nameDir = 'asc', ageDir = 'desc') => {
+  const toggleReverseName = () => {
+    sortUsers(users, !reverseName, reverseAge)
+    setReverseName(!reverseName)
+  }
+
+  const toggleReverseAge = () => {
+    sortUsers(users, reverseName, !reverseAge)
+    setReverseAge(!reverseAge)
+  }
+
+  const sortUsers = (people, nameReverse = false, ageReverse = false) => {
+    const defaultSort = [-1, 1]
+    const [leftName, rightName] = nameReverse ? defaultSort.reverse() : defaultSort
+    const [leftAge, rightAge] = ageReverse ? defaultSort.reverse() : defaultSort
     return people.sort((a, b)=> {
       if (a.name.lastName === b.name.lastName){
-        return a.age > b.age ? -1 : 1
+        return a.age > b.age ? leftAge : rightAge
       } else {
-        return a.name.lastName < b.name.lastName ? -1 : 1
+        return a.name.lastName < b.name.lastName ? leftName : rightName
       }
     })
   }
@@ -27,7 +42,6 @@ const useUserUtils = () => {
   }
 
   const filterUsers = (people, minAge, maxAge) => {
-    console.log('yes filterUsers!', people)
     const filtered = people.filter(({age}) => minAge <= age && age <= maxAge)
     const sorted = sortUsers(filtered)
     setUsers(sorted)
@@ -57,6 +71,7 @@ const useUserUtils = () => {
   }
 
   const getUsers = async () => {
+    setSearch('')
     const [kidsResponse, adultsResponse, seniorsResponse] = await Promise.all(
       ageGroups.map((a) => (fetch(`${API_URL}/users/${a}`))))
 
@@ -84,6 +99,8 @@ const useUserUtils = () => {
     filterUsers,
     search,
     setSearch: handleSearch,
+    setReverseName: toggleReverseName,
+    setReverseAge: toggleReverseAge,
   }
 }
 

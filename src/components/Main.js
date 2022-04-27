@@ -6,7 +6,7 @@ import AgeFilter from './AgeFilter'
 import Search from './Search'
 import UserList from './UserList'
 import MainWrapper from './Wrapper'
-import useUserUtils from '../utils'
+import useUserUtils from '../useUserUtils'
 
 const Main = () => {
   const userUtils = useUserUtils()
