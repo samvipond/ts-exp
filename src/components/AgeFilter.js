@@ -19,7 +19,6 @@ const AgeFilter = ({filter, setFilter}) => {
     <div>
       <Input value={filter.min} type="number" onInput={setMin} pre="Min" label="min" name="min" />
       <Input value={filter.max} type="number" onInput={setMax} pre="Max" label="max" name="max" />
-      {/* Max: <input name="maxAge" value={filter.max} type="number" onInput={setMax} /> */}
     </div>
   )
 }
