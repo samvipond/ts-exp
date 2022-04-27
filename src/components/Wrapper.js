@@ -11,7 +11,7 @@ const MainWrapper = styled.div`
     border: 1px solid blue;
     box-sizing: border-box;
     justify-content: space-between;
-    padding: 50px 150px;
+    padding: 50px 15vw;
     flex-wrap: wrap;
 
     h2.title {
@@ -31,7 +31,8 @@ const MainWrapper = styled.div`
 
     flex: 0 0 300px;
     border: 1px solid red;
-
+    max-height: 195px;
+    margin-bottom: 20px;
 
     .users {
       button {
@@ -42,15 +43,25 @@ const MainWrapper = styled.div`
   }
 
   .right {
-    flex: 0 0 700px;
+    flex: 0 0 60%;
     border: 1px solid red;
+    .user-list-header {
+      display: flex;
+      padding: 10px 35px;
+
+    }
     .user-details {
       display: flex;
+      align-items: center;
       border: 1px solid green;
       padding: 10px;
+      input {
+        margin-right: 10px;
+      }
     }
     .user-name {
-      width: 300px;
+      width: 50%;
+      min-width: 225px;
       border: 1px solid purple;
       /* display: inline-block; */
     }
